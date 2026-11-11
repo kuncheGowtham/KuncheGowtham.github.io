@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>index . html</title>
+<meta name="description" content="Kunche Gowtham, B.Tech Electronics and Communication Engineering graduate 2026, MLR Institute of Technology Hyderabad. Analog circuit design, embedded systems, Python, and agentic AI.">
+<meta name="author" content="Kunche Gowtham">
+<meta property="og:title" content="Kunche Gowtham — Electronics &amp; Software Engineer">
+<meta property="og:description" content="ECE graduate 2026, Hyderabad. Analog and mixed-signal design, embedded systems, Python, agentic AI.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F6F5;
+  --surface:#FFFFFF;
+  --ink:#16222A;
+  --muted:#5C6B74;
+  --accent:#0E6A68;
+  --accent-soft:#E2EDEC;
+  --rule:#D9DEDD;
+  --measure:68ch;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#111A1E;
+    --surface:#18242A;
+    --ink:#EDF1F0;
+    --muted:#9DAEB5;
+    --accent:#5FBFB8;
+    --accent-soft:#1D3130;
+    --rule:#27373D;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111A1E;--surface:#18242A;--ink:#EDF1F0;--muted:#9DAEB5;
+  --accent:#5FBFB8;--accent-soft:#1D3130;--rule:#27373D;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:clamp(16px,1rem + .1vw,17.5px);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3{letter-spacing:-.02em}
+p{max-width:var(--measure)}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+
+/* nav */
+nav{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);
+  background:var(--paper);z-index:11}
+nav .wrap{display:flex;gap:clamp(14px,3vw,30px);align-items:center;height:60px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav .who{font-weight:600;color:var(--ink);margin-right:auto;white-space:nowrap}
+nav a{color:var(--muted);font-size:.92rem;font-weight:500;white-space:nowrap}
+nav a:hover{color:var(--accent);text-decoration:none}
+
+/* hero */
+.hero{padding:clamp(48px,9vh,96px) 0 clamp(36px,6vh,64px)}
+.hero h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:700;line-height:1;margin:0 0 1.1rem;letter-spacing:-.035em}
+.hero .pitch{font-size:clamp(1.1rem,2.6vw,1.45rem);color:var(--ink);font-weight:400;max-width:34ch;margin:0 0 1.5rem;line-height:1.4}
+.hero .pitch b{font-weight:600;color:var(--accent)}
+.facts{display:flex;flex-wrap:wrap;gap:.4rem 1.8rem;color:var(--muted);font-size:.95rem;margin:0 0 2rem}
+.actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{
+  display:inline-block;padding:.62rem 1.25rem;border-radius:6px;font-size:.95rem;font-weight:500;
+  background:var(--accent);color:var(--paper);border:1px solid var(--accent);
+}
+.btn:hover{text-decoration:none;opacity:.9}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* tracks */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:clamp(16px,3vw,28px);margin-top:.5rem}
+.track{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:clamp(20px,3vw,28px)}
+.track h3{margin:0 0 .6rem;font-size:1.1rem;font-weight:600}
+.track p{color:var(--muted);font-size:.96rem;margin:0 0 1rem;max-width:none}
+.track ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.4rem}
+.track li{font-size:.84rem;padding:.26rem .6rem;border-radius:4px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+
+section{padding:clamp(44px,7vh,76px) 0;border-top:1px solid var(--rule)}
+section > h2{font-size:clamp(1.35rem,3vw,1.8rem);font-weight:600;margin:0 0 1.5rem}
+.lede{font-family:"IBM Plex Serif",Georgia,serif;font-size:clamp(1.05rem,2.1vw,1.22rem);line-height:1.7;max-width:62ch}
+.lede + .lede{margin-top:1.1rem}
+
+/* projects */
+.proj{padding:1.9rem 0;border-top:1px solid var(--rule)}
+.proj:first-of-type{border-top:none;padding-top:0}
+.proj-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1rem;margin-bottom:.55rem}
+.proj h3{margin:0;font-size:1.2rem;font-weight:600}
+.tag{font-size:.78rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:.22rem .55rem;border-radius:4px}
+.proj p{color:var(--muted);margin:0 0 .6rem}
+.proj .note{font-size:.9rem;opacity:.85}
+
+/* skills */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:clamp(20px,3.5vw,44px)}
+.cols h3{font-size:1rem;font-weight:600;margin:0 0 .6rem}
+.cols ul{margin:0;padding:0;list-style:none;color:var(--muted)}
+.cols li{padding:.2rem 0;font-size:.96rem}
+
+/* rows */
+.row{padding:1.15rem 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6rem 1.5rem;align-items:baseline}
+.row:first-of-type{border-top:none;padding-top:0}
+.row h3{margin:0;font-size:1.05rem;font-weight:600}
+.row p{margin:.3rem 0 0;color:var(--muted);font-size:.94rem}
+.row .when{color:var(--muted);font-size:.9rem;white-space:nowrap}
+
+.contact-lines{display:flex;flex-direction:column;gap:.55rem;margin-top:1.2rem;font-size:1.02rem}
+footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--rule);color:var(--muted);font-size:.86rem}
+
+@media (max-width:560px){
+  .row{grid-template-columns:1fr}
+  .row .when{order:-1;font-size:.85rem}
+}
+@media (prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.25,.8,.4,1) forwards}
+  .rise.r2{animation-delay:.1s}
+  .rise.r3{animation-delay:.2s}
+  .rise.r4{animation-delay:.3s}
+}
+@keyframes rise{to{opacity:1;transform:none}}
+
+@media print{
+  nav,.actions,footer{display:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  section{padding:14pt 0;break-inside:avoid}
+  .track{border:1px solid #ccc}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="who">Kunche Gowtham</span>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <h1 class="rise">Kunche Gowtham</h1>
+    <p class="pitch rise r2">Electronics engineer who also writes software. I work across <b>circuit design</b> and <b>code</b>, from analog silicon to AI agents.</p>
+    <p class="facts rise r3">
+      <span>B.Tech, Electronics &amp; Communication Engineering, 2026</span>
+      <span>MLR Institute of Technology, Hyderabad</span>
+      <span>Open to work</span>
+    </p>
+    <div class="actions rise r4">
+      <a class="btn" href="mailto:gowthamkunche2214@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/kunche-gowtham-180950275" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/gowtham2214" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <section id="about" style="border-top:none;padding-top:0">
+    <div class="tracks">
+      <div class="track">
+        <h3>Hardware and embedded</h3>
+        <p>Analog and mixed-signal circuit design, device-level behaviour, and embedded systems. My final-year project was a temperature-compensated bandgap voltage reference, published as a paper.</p>
+        <ul>
+          <li>Analog IC design</li><li>Mixed-signal</li><li>VLSI</li><li>Embedded systems</li><li>Circuit simulation</li>
+        </ul>
+      </div>
+      <div class="track">
+        <h3>Software and AI</h3>
+        <p>Backend web development in Python, and agent systems built from first principles with LangChain, the OpenAI Agents SDK and the Model Context Protocol.</p>
+        <ul>
+          <li>Python</li><li>JavaScript</li><li>Flask</li><li>LangChain</li><li>MCP</li><li>DSA</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>About</h2>
+    <p class="lede">I graduated in Electronics and Communication Engineering from MLR Institute of Technology, Hyderabad, in 2026. My degree work centred on analog circuit design — the part of a chip that handles the continuous world rather than ones and zeros — and ended with a published paper on bandgap voltage references.</p>
+    <p class="lede">Alongside that I build software: a Flask-based delivery platform, and more recently agent systems following Oracle’s agentic AI certification. Both sides reward the same instinct, which is working out why something behaves as it does before trying to change it.</p>
+    <p class="lede">I am looking for an engineering role where I can keep doing both, or go deep on one. I am equally interested in a VLSI or embedded position and in backend or AI engineering.</p>
+  </section>
+
+  <section id="work">
+    <h2>Work</h2>
+
+    <div class="proj">
+      <div class="proj-head">
+        <h3>Bandgap voltage reference</h3>
+        <span class="tag">Analog IC design</span>
+      </div>
+      <p>A temperature-independent reference producing approximately 1.2 V, for voltage regulators, ADCs, DACs and power management ICs. The design sums a CTAT voltage from a diode-connected BJT with a PTAT voltage generated by two transistors at different emitter areas, weighted by a resistor ratio so the opposing temperature coefficients cancel. Current mirrors hold the branch currents in proportion and reduce supply sensitivity.</p>
+      <p class="note">Published paper, co-authored with Bojja Ravi Chandra Prasad, under the guidance of Mr. K. Maniraj, MLRIT.</p>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <h3>FuelTopUp</h3>
+        <span class="tag">Python, Flask</span>
+      </div>
+      <p>An on-demand fuel delivery platform. Customers set a location and place an order; registered providers in that area accept and dispatch; each order moves through an explicit state machine that the tracking view reads directly. Built with Flask and Jinja2, with session-based authentication and separate dashboards for customers and providers.</p>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <h3>Agent tooling</h3>
+        <span class="tag">LangChain, MCP</span>
+      </div>
+      <p>Building agents from first principles after completing Oracle’s agentic AI foundations certification — LangChain, the OpenAI Agents SDK, and a working MCP server. Current focus is understanding where these abstraction layers earn their complexity and where plain code does the job better.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="cols">
+      <div>
+        <h3>Circuit design</h3>
+        <ul>
+          <li>Analog and mixed-signal design</li>
+          <li>CMOS and BJT device behaviour</li>
+          <li>Current mirrors and biasing</li>
+          <li>Temperature compensation</li>
+          <li>Circuit simulation</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Programming</h3>
+        <ul>
+          <li>Python</li>
+          <li>JavaScript</li>
+          <li>C</li>
+          <li>Data structures and algorithms</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Software and tools</h3>
+        <ul>
+          <li>Flask</li>
+          <li>LangChain</li>
+          <li>OpenAI Agents SDK</li>
+          <li>Model Context Protocol</li>
+          <li>Git and GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education and credentials</h2>
+
+    <div class="row">
+      <div>
+        <h3>B.Tech, Electronics and Communication Engineering</h3>
+        <p>MLR Institute of Technology (Autonomous), JNTUH, Hyderabad</p>
+      </div>
+      <div class="when">2022 – 2026</div>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3>Agentic AI Certified Foundations Associate</h3>
+        <p>Oracle. Building agents from scratch with LangChain, the OpenAI Agents SDK and MCP, including OCI Enterprise AI Agents and agentic features in Oracle AI Database.</p>
+      </div>
+      <div class="when">2026</div>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3>Technical Head, Excellence in VLSI Engineering Club</h3>
+        <p>MLRIT. Ran workshops and design challenges in VLSI and embedded systems, and mentored junior students in circuit design and simulation tools.</p>
+      </div>
+      <div class="when">2023 – 2026</div>
+    </div>
+
+    <div class="row">
+      <div>
+        <h3>Hackathons</h3>
+        <p>INVENTRON 2K23 and Metaloop 2K23 national hackathons, and App Fiesta, at the Centre for Innovation and Entrepreneurship, MLRIT.</p>
+      </div>
+      <div class="when">2023</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Open to engineering roles in analog and mixed-signal design, embedded systems, backend development and AI. Based in Hyderabad and open to relocating.</p>
+    <div class="contact-lines">
+      <span><a href="mailto:gowthamkunche2214@gmail.com">gowthamkunche2214@gmail.com</a></span>
+      <span><a href="tel:+918341902231">+91 83419 02231</a></span>
+      <span><a href="https://www.linkedin.com/in/kunche-gowtham-180950275" rel="noopener">linkedin.com/in/kunche-gowtham</a></span>
+      <span><a href="https://github.com/gowtham2214" rel="noopener">github.com/gowtham2214</a></span>
+    </div>
+  </section>
+
+  <footer>Kunche Gowtham, Hyderabad, India</footer>
+
+</div>
+</body>
+</html>
