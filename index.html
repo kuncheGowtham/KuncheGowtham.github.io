@@ -55,6 +55,7 @@
   --accent:#0E6A68;
   --accent-soft:#E2EDEC;
   --rule:#D9DEDD;
+  --shadow:0 18px 50px rgba(22,34,42,.08);
   --measure:68ch;
   color-scheme:light;
   box-sizing:border-box;
@@ -75,7 +76,8 @@
 }
 :root[data-theme="dark"]{
   --paper:#111A1E;--surface:#18242A;--ink:#EDF1F0;--muted:#9DAEB5;
-  --accent:#5FBFB8;--accent-soft:#1D3130;--rule:#27373D;color-scheme:dark;
+  --accent:#5FBFB8;--accent-soft:#1D3130;--rule:#27373D;
+  --shadow:0 18px 50px rgba(0,0,0,.2);color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:inherit}
 
@@ -107,11 +109,18 @@ nav .wrap::-webkit-scrollbar{display:none}
 nav .who{font-weight:600;color:var(--ink);margin-right:auto;white-space:nowrap}
 nav a{color:var(--muted);font-size:.92rem;font-weight:500;white-space:nowrap}
 nav a:hover{color:var(--accent);text-decoration:none}
+.theme-toggle{
+  appearance:none;border:1px solid var(--rule);background:var(--surface);color:var(--muted);
+  border-radius:999px;padding:.35rem .7rem;font:inherit;font-size:.82rem;cursor:pointer;white-space:nowrap
+}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
 
 /* hero */
-.hero{padding:clamp(48px,9vh,96px) 0 clamp(36px,6vh,64px)}
+.hero{padding:clamp(48px,9vh,96px) 0 clamp(36px,6vh,64px);position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr);gap:clamp(28px,7vw,80px);align-items:end}
+.eyebrow{color:var(--accent);font-size:.82rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;margin:0 0 1.1rem}
 .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:700;line-height:1;margin:0 0 1.1rem;letter-spacing:-.035em}
-.hero .pitch{font-size:clamp(1.1rem,2.6vw,1.45rem);color:var(--ink);font-weight:400;max-width:34ch;margin:0 0 1.5rem;line-height:1.4}
+.hero .pitch{font-size:clamp(1.1rem,2.6vw,1.45rem);color:var(--ink);font-weight:400;max-width:36ch;margin:0 0 1.5rem;line-height:1.4}
 .hero .pitch b{font-weight:600;color:var(--accent)}
 .facts{display:flex;flex-wrap:wrap;gap:.4rem 1.8rem;color:var(--muted);font-size:.95rem;margin:0 0 2rem}
 .actions{display:flex;flex-wrap:wrap;gap:.7rem}
@@ -122,10 +131,12 @@ nav a:hover{color:var(--accent);text-decoration:none}
 .btn:hover{text-decoration:none;opacity:.9}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-note{border-left:3px solid var(--accent);padding:1rem 0 1rem 1.2rem;color:var(--muted);font-size:.94rem}
+.hero-note strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:.3rem}
 
 /* tracks */
 .tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:clamp(16px,3vw,28px);margin-top:.5rem}
-.track{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:clamp(20px,3vw,28px)}
+.track{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:clamp(20px,3vw,28px);box-shadow:var(--shadow)}
 .track h3{margin:0 0 .6rem;font-size:1.1rem;font-weight:600}
 .track p{color:var(--muted);font-size:.96rem;margin:0 0 1rem;max-width:none}
 .track ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.4rem}
@@ -144,6 +155,7 @@ section > h2{font-size:clamp(1.35rem,3vw,1.8rem);font-weight:600;margin:0 0 1.5r
 .tag{font-size:.78rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:.22rem .55rem;border-radius:4px}
 .proj p{color:var(--muted);margin:0 0 .6rem}
 .proj .note{font-size:.9rem;opacity:.85}
+.proj .btn{margin-top:.35rem}
 
 /* skills */
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:clamp(20px,3.5vw,44px)}
@@ -162,6 +174,7 @@ section > h2{font-size:clamp(1.35rem,3vw,1.8rem);font-weight:600;margin:0 0 1.5r
 footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--rule);color:var(--muted);font-size:.86rem}
 
 @media (max-width:560px){
+  .hero-grid{grid-template-columns:1fr}
   .row{grid-template-columns:1fr}
   .row .when{order:-1;font-size:.85rem}
 }
@@ -192,24 +205,33 @@ footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--rule);color:var(--mute
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode">Dark mode</button>
   </div>
 </nav>
 
 <div class="wrap">
 
   <header class="hero">
-    <h1 class="rise">Kunche Gowtham</h1>
-    <p class="pitch rise r2">Electronics engineer who also writes software. I work across <b>circuit design</b> and <b>code</b>, from analog silicon to AI agents.</p>
-    <p class="facts rise r3">
-      <span>B.Tech, Electronics &amp; Communication Engineering, 2026</span>
-      <span>MLR Institute of Technology, Hyderabad</span>
-      <span>Open to work</span>
-    </p>
-    <div class="actions rise r4">
-      <a class="btn" href="mailto:gowthamkunche2214@gmail.com">Email me</a>
-      <a class="btn ghost" href="https://www.linkedin.com/in/kunche-gowtham-180950275" rel="noopener">LinkedIn</a>
-      <a class="btn ghost" href="https://github.com/kuncheGowtham" rel="noopener">GitHub</a>
-      <a class="btn ghost" href="resume.pdf">Download CV</a>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow rise">Electronics &amp; software engineer</p>
+        <h1 class="rise r2">Kunche Gowtham</h1>
+        <p class="pitch rise r3">I build at the intersection of <b>analog hardware</b>, <b>embedded systems</b>, and <b>practical software</b>.</p>
+        <p class="facts rise r4">
+          <span>ECE graduate · 2026</span>
+          <span>Hyderabad, India</span>
+          <span>Open to opportunities</span>
+        </p>
+        <div class="actions rise r4">
+          <a class="btn" href="mailto:gowthamkunche2214@gmail.com">Get in touch</a>
+          <a class="btn ghost" href="resume.pdf">Download CV</a>
+          <a class="btn ghost" href="https://github.com/kuncheGowtham" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <aside class="hero-note rise r4">
+        <strong>What I bring</strong>
+        Systems thinking from transistor-level design, paired with the practical delivery mindset of a software builder.
+      </aside>
     </div>
   </header>
 
@@ -259,6 +281,15 @@ footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--rule);color:var(--mute
       </div>
       <p>An on-demand fuel delivery platform. Customers set a location and place an order; registered providers in that area accept and dispatch; each order moves through an explicit state machine that the tracking view reads directly. Built with Flask and Jinja2, with session-based authentication and separate dashboards for customers and providers.</p>
       <a class="btn ghost" href="https://github.com/kuncheGowtham/FuelTopUp" rel="noopener">View on GitHub</a>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <h3>Electronic Dice</h3>
+        <span class="tag">Arduino, Embedded</span>
+      </div>
+      <p>A compact microcontroller project that generates a random value from one to six and renders it through an LED dice pattern. It combines button input, random number generation and clear hardware feedback in a simple interactive build.</p>
+      <a class="btn ghost" href="https://github.com/kuncheGowtham/Electric-Dice-Auduino" rel="noopener">View on GitHub</a>
     </div>
 
     <div class="proj">
@@ -352,8 +383,26 @@ footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--rule);color:var(--mute
     </div>
   </section>
 
-  <footer>Kunche Gowtham, Hyderabad, India</footer>
+  <footer>© 2026 Kunche Gowtham · Hyderabad, India</footer>
 
 </div>
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector(".theme-toggle");
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) root.dataset.theme = savedTheme;
+  const updateThemeLabel = () => {
+    const dark = root.dataset.theme === "dark";
+    toggle.textContent = dark ? "Light mode" : "Dark mode";
+    toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  };
+  updateThemeLabel();
+  toggle.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+    updateThemeLabel();
+  });
+</script>
 </body>
 </html>
