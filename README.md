@@ -1,3 +1,5 @@
+![Kunche Gowtham Portfolio](https://raw.githubusercontent.com/kuncheGowtham/KuncheGowtham.github.io/main/assets/portfolio-banner.svg)
+
 # Kunche Gowtham — Portfolio
 
 Personal portfolio for Kunche Gowtham, an Electronics and Communication Engineering graduate focused on analog and mixed-signal circuit design, embedded systems, Python, and agentic AI.
